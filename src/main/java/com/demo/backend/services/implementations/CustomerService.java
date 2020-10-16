@@ -5,14 +5,17 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.BeanUtils;
+import org.springframework.stereotype.Service;
 
 import com.demo.backend.exceptions.RecordNotFoundException;
 import com.demo.backend.models.Customer;
 import com.demo.backend.repositories.CustomerRepository;
 import com.demo.backend.services.interfaces.ICustomerService;
 import com.demo.backend.viewmodels.CustomerCreateViewModel;
+import com.demo.backend.viewmodels.CustomerLookupViewModel;
 import com.demo.backend.viewmodels.CustomerViewModel;
 
+@Service
 public class CustomerService implements ICustomerService {
 	private final CustomerRepository customerRepository;
 
@@ -42,6 +45,15 @@ public class CustomerService implements ICustomerService {
 		CustomerViewModel viewModel = new CustomerViewModel();
 		BeanUtils.copyProperties(customerDb.get(), viewModel);
 		return viewModel;
+	}
+
+	@Override
+	public List<CustomerLookupViewModel> getLookup() {
+		return this.customerRepository.findAll().stream().map(c -> {
+			CustomerLookupViewModel viewModel = new CustomerLookupViewModel();
+			BeanUtils.copyProperties(c, viewModel);
+			return viewModel;
+		}).collect(Collectors.toList());
 	}
 
 	@Override

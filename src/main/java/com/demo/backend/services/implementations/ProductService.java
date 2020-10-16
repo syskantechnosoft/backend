@@ -5,6 +5,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.BeanUtils;
+import org.springframework.stereotype.Service;
 
 import com.demo.backend.exceptions.RecordNotFoundException;
 import com.demo.backend.models.Product;
@@ -14,6 +15,7 @@ import com.demo.backend.viewmodels.ProductCreateViewModel;
 import com.demo.backend.viewmodels.ProductLookupViewModel;
 import com.demo.backend.viewmodels.ProductViewModel;
 
+@Service
 public class ProductService implements IProductService {
 	private final ProductRepository productRepository;
 

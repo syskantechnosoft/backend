@@ -8,7 +8,7 @@ public class CustomerCreateViewModel {
 	private String city;
 	private String phone;
 	private String email;
-	private String gstn;
+	private String gstin;
 
 	public String getName() {
 		return name;
@@ -66,11 +66,11 @@ public class CustomerCreateViewModel {
 		this.email = email;
 	}
 
-	public String getGstn() {
-		return gstn;
+	public String getGstin() {
+		return gstin;
 	}
 
-	public void setGstn(String gstn) {
-		this.gstn = gstn;
+	public void setGstin(String gstn) {
+		this.gstin = gstn;
 	}
 }
